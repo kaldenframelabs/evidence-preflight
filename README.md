@@ -28,13 +28,13 @@ node bin/validate-evidence-card.mjs examples/evidence-preflight-v1.example.json
 
 A valid card exits with status `0`. An invalid, malformed, or oversized card exits with status `1` and reports structural errors without printing the card contents. Input is limited to 64 KB, matching the browser worksheet's local-import boundary.
 
-To add the validator and CLI to another local project, install the exact v1.3.1 GitHub release asset:
+To add the validator and CLI to another local project, install the exact MIT-licensed v1.3.2 first-party package:
 
 ```shell
-npm install https://github.com/kaldenframelabs/evidence-preflight/releases/download/v1.3.1/kaldenframe-labs-evidence-preflight-1.3.1.tgz
+npm install https://kaldenframelabs.com/downloads/kaldenframe-labs-evidence-preflight-1.3.2.tgz
 ```
 
-The [v1.3.1 release notes](https://github.com/kaldenframelabs/evidence-preflight/releases/tag/v1.3.1) publish the package checksum and validation boundary. This direct GitHub path does not claim npm-registry availability.
+The [v1.3.2 release notes](https://kaldenframelabs.com/downloads/evidence-preflight-v1.3.2-release-notes.md) publish the package checksum and validation boundary. This direct package path does not claim npm-registry availability. GitHub remains a source mirror and will receive the licensing patch when authenticated write access is available.
 
 Run the included checks with:
 
@@ -64,4 +64,4 @@ The validator intentionally accepts only exact, complete v1 exports. Additional 
 
 See [SECURITY.md](SECURITY.md) for the vulnerability-reporting contact and testing boundary.
 
-© 2026 KaldenFrame Labs. Publication of this repository does not weaken the documentation-not-truth boundary stated in the schema and every evidence card.
+Licensed under the [MIT License](LICENSE). Publication does not weaken the documentation-not-truth boundary stated in the schema and every evidence card.
