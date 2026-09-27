@@ -1,6 +1,6 @@
 {
   "name": "evidence-preflight",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "description": "Schema, example, and local validator for KaldenFrame Evidence Preflight cards.",
   "type": "module",

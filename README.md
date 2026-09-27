@@ -50,7 +50,7 @@ Canonical hosted copies:
 
 The hosted worksheet processes entries in the browser and does not upload or persist them. The command-line validator reads only the local file path supplied to it and performs no network requests.
 
-The validator intentionally accepts only exact, complete v1 exports. Additional properties, changed contract constants, malformed timestamps, short fields, and files over 64 KB are rejected before use.
+The validator intentionally accepts only exact, complete v1 exports. Additional properties, changed contract constants, malformed or impossible RFC 3339 timestamps, short fields, and files over 64 KB are rejected before use. Timestamp checks cover calendar month lengths, leap years, time ranges, and numeric UTC offsets without relying on permissive runtime date parsing.
 
 ## Security
 

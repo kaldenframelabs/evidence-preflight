@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { join } from "node:path";
 import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 
 import { validateEvidenceCard } from "../lib/evidence-preflight-v1.mjs";
 
-const root = resolve(import.meta.dirname, "..");
+const root = fileURLToPath(new URL("..", import.meta.url));
 const valid = JSON.parse(readFileSync(join(root, "examples", "evidence-preflight-v1.example.json"), "utf8"));
 const clone = (value) => JSON.parse(JSON.stringify(value));
 
@@ -27,6 +28,22 @@ assert.match(validateEvidenceCard(extraProperty).errors.join(" "), /exactly the 
 const invalidDate = clone(valid);
 invalidDate.generated_at = "2026";
 assert.match(validateEvidenceCard(invalidDate).errors.join(" "), /RFC 3339/);
+
+const impossibleDate = clone(valid);
+impossibleDate.generated_at = "2026-02-30T12:00:00Z";
+assert.match(validateEvidenceCard(impossibleDate).errors.join(" "), /RFC 3339/);
+
+const nonRfcDate = clone(valid);
+nonRfcDate.generated_at = "September 27, 2026 12:00:00 UTC";
+assert.match(validateEvidenceCard(nonRfcDate).errors.join(" "), /RFC 3339/);
+
+const invalidLeapDay = clone(valid);
+invalidLeapDay.generated_at = "2025-02-29T12:00:00Z";
+assert.match(validateEvidenceCard(invalidLeapDay).errors.join(" "), /RFC 3339/);
+
+const validLeapDay = clone(valid);
+validLeapDay.generated_at = "2024-02-29T23:59:59.123+14:00";
+assert.equal(validateEvidenceCard(validLeapDay).valid, true);
 
 const validCli = spawnSync(process.execPath, [join(root, "bin", "validate-evidence-card.mjs"), join(root, "examples", "evidence-preflight-v1.example.json")], { encoding: "utf8" });
 assert.equal(validCli.status, 0, validCli.stderr);
@@ -49,4 +66,4 @@ try {
   rmSync(temp, { recursive: true, force: true });
 }
 
-console.log("evidence-preflight-validator=PASS cases=8");
+console.log("evidence-preflight-validator=PASS cases=12");
