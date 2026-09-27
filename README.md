@@ -20,13 +20,21 @@ Conformance means those documentation fields are present and structurally valid.
 
 ## Validate a card locally
 
-Node.js 20 or newer is recommended. No package installation is required.
+Node.js 20 or newer is recommended. A repository checkout requires no package installation.
 
 ```shell
 node bin/validate-evidence-card.mjs examples/evidence-preflight-v1.example.json
 ```
 
 A valid card exits with status `0`. An invalid, malformed, or oversized card exits with status `1` and reports structural errors without printing the card contents. Input is limited to 64 KB, matching the browser worksheet's local-import boundary.
+
+To add the validator and CLI to another local project, install the exact v1.3.1 GitHub release asset:
+
+```shell
+npm install https://github.com/kaldenframelabs/evidence-preflight/releases/download/v1.3.1/kaldenframe-labs-evidence-preflight-1.3.1.tgz
+```
+
+The [v1.3.1 release notes](https://github.com/kaldenframelabs/evidence-preflight/releases/tag/v1.3.1) publish the package checksum and validation boundary. This direct GitHub path does not claim npm-registry availability.
 
 Run the included checks with:
 
