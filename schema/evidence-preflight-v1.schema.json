@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kaldenframelabs.com/schemas/evidence-preflight-v1.schema.json",
+  "title": "KaldenFrame Evidence Preflight v1 export",
+  "description": "The machine-readable contract for a complete Evidence Preflight JSON export. Conformance describes documentation structure, not evidentiary truth or validity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_url",
+    "schema",
+    "generated_at",
+    "generator",
+    "documentation_status",
+    "record",
+    "boundary"
+  ],
+  "properties": {
+    "schema_url": {
+      "const": "https://kaldenframelabs.com/schemas/evidence-preflight-v1.schema.json"
+    },
+    "schema": {
+      "const": "kaldenframe.evidence-preflight.v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generator": {
+      "const": "KaldenFrame Labs Evidence Preflight"
+    },
+    "documentation_status": {
+      "const": "COMPLETE"
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim",
+        "scope",
+        "provenance",
+        "comparison",
+        "failure",
+        "limitations",
+        "decision"
+      ],
+      "properties": {
+        "claim": {
+          "type": "string",
+          "minLength": 24
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 32
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 32
+        },
+        "comparison": {
+          "type": "string",
+          "minLength": 24
+        },
+        "failure": {
+          "type": "string",
+          "minLength": 24
+        },
+        "limitations": {
+          "type": "string",
+          "minLength": 24
+        },
+        "decision": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "boundary": {
+      "const": "Documentation completeness is not evidence of correctness, validity, or fitness for use."
+    }
+  }
+}

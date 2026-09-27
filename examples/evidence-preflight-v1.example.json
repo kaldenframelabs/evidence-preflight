@@ -1,0 +1,17 @@
+{
+  "schema_url": "https://kaldenframelabs.com/schemas/evidence-preflight-v1.schema.json",
+  "schema": "kaldenframe.evidence-preflight.v1",
+  "generated_at": "2026-09-27T02:10:00.000Z",
+  "generator": "KaldenFrame Labs Evidence Preflight",
+  "documentation_status": "COMPLETE",
+  "record": {
+    "claim": "Adding a required source-date field to an internal review template reduces incomplete submissions at first review.",
+    "scope": "Internal quality-assurance submissions created during an eight-week pilot. The claim covers first-review completeness only and excludes review accuracy, turnaround time, and external teams.",
+    "provenance": "Submission records from the current template and the pilot template, versioned before rollout. Record template version, submission date, required-field status, and reviewer disposition as of the pilot close.",
+    "comparison": "Compare the share of submissions returned for missing source dates during the pilot with the preceding eight-week baseline, using the same team and review definition.",
+    "failure": "Weaken the claim if the return rate does not fall by at least 20% relative to baseline, or if more than 10% of pilot records contain dates that reviewers cannot trace to a source.",
+    "limitations": "The pilot is not randomized, may be affected by reviewer learning, and does not show that the source itself is correct. Results may not transfer to other teams or document types.",
+    "decision": "The quality lead will use the result to decide whether to keep the field, revise its guidance, or stop the rollout before expanding the template."
+  },
+  "boundary": "Documentation completeness is not evidence of correctness, validity, or fitness for use."
+}

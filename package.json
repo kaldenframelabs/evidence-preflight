@@ -1,0 +1,14 @@
+{
+  "name": "evidence-preflight",
+  "version": "1.3.0",
+  "private": true,
+  "description": "Schema, example, and local validator for KaldenFrame Evidence Preflight cards.",
+  "type": "module",
+  "scripts": {
+    "test": "node test/validate.mjs",
+    "validate:example": "node bin/validate-evidence-card.mjs examples/evidence-preflight-v1.example.json"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
