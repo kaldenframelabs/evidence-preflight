@@ -20,13 +20,7 @@ Conformance means those documentation fields are present and structurally valid.
 
 ## Validate a card locally
 
-Node.js 20 or newer is recommended. Run the published command without installing it:
-
-```shell
-npx --yes @kaldenframe-labs/evidence-preflight ./evidence-card.json
-```
-
-The repository checkout remains directly runnable with no package installation:
+Node.js 20 or newer is recommended. No package installation is required.
 
 ```shell
 node bin/validate-evidence-card.mjs examples/evidence-preflight-v1.example.json
@@ -39,20 +33,6 @@ Run the included checks with:
 ```shell
 npm test
 ```
-
-For programmatic validation:
-
-```shell
-npm install @kaldenframe-labs/evidence-preflight
-```
-
-```js
-import { validateEvidenceCard } from "@kaldenframe-labs/evidence-preflight";
-
-const result = validateEvidenceCard(card);
-```
-
-The package has no runtime dependencies and performs no network requests.
 
 ## Machine-readable assets
 
